@@ -165,7 +165,9 @@ remove_item([3], 0) # returns []
 
 
 def remove_item(items, n):
-    new_list = items
+    new_list = []
+    for i in items:
+        new_list.append(i)
     del new_list[n]
     return new_list
 
@@ -189,14 +191,14 @@ def remove_item_should_only_remove_value_at_specified_index():
     )
 
 
-@skip_test
+@run_test
 def remove_item_should_return_new_list():
     items = [1, 2, 3]
     result = remove_item(items, 2)
     assert result is not items, format_err_msg("a new list", "original input list")
 
 
-@skip_test
+@run_test
 def remove_item_should_not_mutate_original_list():
     items = [1, 2, 3]
     remove_item(items, 2)
@@ -287,30 +289,34 @@ present in two lists
 
 
 def is_item_omnipresent(lists, item):
-    pass
+    for i in lists:
+        if item not in i:
+            return False
+    return True
 
-@skip_test
+
+@run_test
 def is_item_omnipresent_should_return_false_if_item_is_missing_from_all_lists():
     assert is_item_omnipresent([[1], [2]], 3) is False, format_err_msg(
         False, is_item_omnipresent([[1], [2]], 3)
     )
 
 
-@skip_test
+@run_test
 def is_item_omnipresent_should_return_false_if_item_is_missing_from_a_single_list():
     assert is_item_omnipresent([[1], [2]], 1) is False, format_err_msg(
         False, is_item_omnipresent([[1], [2]], 1)
     )
 
 
-@skip_test
+@run_test
 def is_item_omnipresent_should_return_true_if_item_is_present_in_all_lists():
     assert is_item_omnipresent([[1], [1], [1]], 1) is True, format_err_msg(
         True, is_item_omnipresent([[1], [1], [1]], 1)
     )
 
 
-@skip_test
+@run_test
 def is_item_omnipresent_should_return_true_if_item_is_present_amongst_other_elements_in_mixed_lists():
     assert is_item_omnipresent([[5, 4, 3, 2, 1], [1, 4, 4], [9, 1, 1]], 1) is True, (
         format_err_msg(
@@ -336,17 +342,22 @@ flatten_list_by_one([[1], [2], [[3, 4]]])  # returns [1, 2, [3, 4]]
 
 
 def flatten_list_by_one(nested_lists):
-    pass
+    flat = []
+    for i in nested_lists:
+        for j in i:
+            flat.append(j)
+
+    return flat
 
 
-@skip_test
+@run_test
 def flatten_list_by_one_should_remove_single_layer_of_nesting():
     assert flatten_list_by_one([[1], [2]]) == [1, 2], format_err_msg(
         [1, 2], flatten_list_by_one([[1], [2]])
     )
 
 
-@skip_test
+@run_test
 def flatten_list_by_one_should_preserve_subsequent_layers_of_nesting():
     assert flatten_list_by_one([[[1, 2]], [[3, 4]]]) == [
         [1, 2],
@@ -365,7 +376,7 @@ def flatten_list_by_one_should_preserve_subsequent_layers_of_nesting():
     )
 
 
-@skip_test
+@run_test
 def flatten_list_by_one_should_combine_levels_of_nesting():
     assert flatten_list_by_one([[1, 2], [3, [4, 5]]]) == [
         1,
