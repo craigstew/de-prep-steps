@@ -9,11 +9,8 @@ from test_api.checks import run_test, skip_test, format_err_msg, NORMAL_RED, DEF
 
 # Task 1
 def create_set(numbers):
-    """
-    This function should take a list of numbers and convert it to a set
-    """
-    pass
-
+    new_set = set(numbers)
+    return new_set
 
 @run_test
 def test_create_set():
@@ -32,14 +29,10 @@ def test_create_set():
 
 # Task 2
 def is_in_set(my_set, element):
-    """
-    This function should take a set and an element and return True if the set
-    contains the element and False otherwise
-    """
-    pass
+    return True if element in my_set else False
 
 
-@skip_test
+@run_test
 def test_is_in_set():
     assert is_in_set({5, 2, 3, 4}, 1) is False, \
         format_err_msg(False, is_in_set({5, 2, 3, 4}, 1))
@@ -50,14 +43,10 @@ def test_is_in_set():
 
 # Task 3
 def remove_set_element(my_set):
-    """
-    This function should take a set, remove any one element from it and return
-    the removed element
-    """
-    pass
+    return my_set.pop()
 
 
-@skip_test
+@run_test
 def test_remove_set_element():
     test_set = {1, 2, 3, 4, 5}
     removed_element = remove_set_element(test_set)
@@ -72,14 +61,11 @@ def test_remove_set_element():
 
 # Task 4
 def discard_set_element(my_set, value):
-    """
-    This function should take a set and a value. It should remove the
-    specified value from the set and return the original set.
-    """
-    pass
+    my_set.remove(value)
+    return my_set
 
 
-@skip_test
+@run_test
 def test_discard_set_element():
     assert discard_set_element(
         {"help", "fix", "my", "code"}, "help") == {"fix", "my", "code"}, \
@@ -94,13 +80,11 @@ def test_discard_set_element():
 
 # Task 5
 def copy_set(my_set):
-    """
-    This function should take a set and return a *new copy* of that set
-    """
-    pass
+    new_set = my_set.copy()
+    return new_set
 
 
-@skip_test
+@run_test
 def test_copy_set():
     assert copy_set({1, 2, 3}) == {1, 2, 3}, \
         format_err_msg({1, 2, 3}, copy_set({1, 2, 3}))
