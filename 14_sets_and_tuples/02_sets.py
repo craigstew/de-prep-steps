@@ -9,14 +9,9 @@ from test_api.checks import run_test, skip_test, format_err_msg
 
 #  Task 1
 def check_common_values(set_1, set_2):
-    """
-    This function should take two sets and check if they have any elements in
-        common.
-    - If they DO share any common elements then the function should return True
-    - If they DON'T share any common elements then the function should return
-        False
-    """
-    pass
+    if len(set_1.intersection(set_2)) > 0:
+        return True
+    return False
 
 
 @run_test
@@ -31,19 +26,10 @@ def test_check_common_values():
 
 # Task 2
 def check_subset(set_1, set_2):
-    """
-    This function should take two sets, set_1 and set_2, if set_2 is a
-    *subset* of set_1 then the function should return true.
-
-    A subset is a set made up of values contained in the set it is being
-    compared to.
-    E.g.
-    {3,4} is a *subset* of {1,2,3,4,5}
-    """
-    pass
+    return True if set_2.issubset(set_1) else False
 
 
-@skip_test
+@run_test
 def test_check_subset():
     assert check_subset({'a', 'b', 'c'}, {'a'}) is True, \
         format_err_msg(True, check_subset({'a', 'b', 'c'}, {'a'}))
@@ -54,19 +40,9 @@ def test_check_subset():
 
 # Task 3
 def check_superset(set_1, set_2):
-    """
-    This function should take two sets, set_1 and set_2, if set_2 is a
-    *superset* of set_1 then the function should return true.
+    return True if set_2.issuperset(set_1) else False
 
-    A superset is a set that includes all the values contained in the set
-    it is being compared to.
-    E.g.
-    {1,2,3,4,5} is a *superset* of {3,4}
-    """
-    pass
-
-
-@skip_test
+@run_test
 def test_check_superset():
     assert check_superset({1, 2}, {1, 2, 3, 4, 5}) is True, \
         format_err_msg(True, check_superset({1, 2}, {1, 2, 3, 4, 5}))
@@ -86,10 +62,10 @@ def find_set_differences(set_1, set_2):
     It should return a set containing all the elements of set_1 that aren't
     in set_2 AND all the elements of set_2 that aren't in set_1.
     """
-    pass
+    return set_1.symmetric_difference(set_2)
 
 
-@skip_test
+@run_test
 def test_find_set_differences():
     set_1 = {"laptop", "phone", "glasses", "lunch"}
     set_2 = {"phone", "keys", "wallet", "lunch"}
@@ -112,14 +88,10 @@ def test_find_set_differences():
 
 # Task 5
 def create_union(set_1, set_2):
-    """
-    This function should create a *union* of set_1 and set_2. A union will
-    have all the values of both sets. There will be no duplicates.
-    """
-    pass
+    return set_1.union(set_2)
 
 
-@skip_test
+@run_test
 def test_create_union():
     set_1 = {"laptop", "phone", "glasses", "lunch"}
     set_2 = {"phone", "keys", "wallet", "lunch"}
@@ -140,17 +112,11 @@ def test_create_union():
         format_err_msg(expected, create_union(set_5, set_6))
 
 # Task 6
-
-
 def create_intersection(set_1, set_2):
-    """
-    This function should create an *intersection* of set_1 and set_2. An
-    intersection will contain all the values that are present in BOTH sets.
-    """
-    pass
+    return set_1.intersection(set_2)
 
 
-@skip_test
+@run_test
 def test_create_intersection():
     set_1 = {"laptop", "phone", "glasses", "lunch"}
     set_2 = {"phone", "keys", "wallet", "lunch"}
