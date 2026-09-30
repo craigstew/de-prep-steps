@@ -9,11 +9,7 @@ from test_api.checks import run_test, skip_test, format_err_msg
 
 # Task 1
 def create_tuple(arg_1, arg_2):
-    """
-    This function takes two arguments and should return a tuple
-        containing the arguments
-    """
-    pass
+    return (arg_1, arg_2)
 
 
 @run_test
@@ -31,13 +27,10 @@ def test_create_tuple():
 
 # Task 2
 def tuple_to_list(my_tuple):
-    """
-    This function should convert the given tuple to a list
-    """
-    pass
+    return list(my_tuple)
 
 
-@skip_test
+@run_test
 def test_tuple_to_list():
     assert tuple_to_list(("Alex", "Windows")) == ["Alex", "Windows"], \
         format_err_msg(["Alex", "Windows"], tuple_to_list(("Alex", "Windows")))
@@ -51,14 +44,10 @@ def test_tuple_to_list():
 
 #  Task 3
 def count_threes(my_tuple):
-    """
-    This function should return the number of times the string "three" appears
-        in the given tuple
-    """
-    pass
+    return my_tuple.count('three')
 
 
-@skip_test
+@run_test
 def test_count_threes():
     assert count_threes((1, 2, 3, 4, 5)) == 0, \
         format_err_msg(0, count_threes((1, 2, 3, 4, 5)))
@@ -73,13 +62,10 @@ def test_count_threes():
 
 # Task 4
 def get_index_of_five(my_tuple):
-    """
-    This function takes a tuple and should return the index of the number 5
-    """
-    pass
+    return my_tuple.index(5)
 
 
-@skip_test
+@run_test
 def test_get_index_of_five():
     assert get_index_of_five((1, 6, 5, 2, 5)) == 2, \
         format_err_msg(2, get_index_of_five((1, 6, 5, 2, 5)))
@@ -92,13 +78,10 @@ def test_get_index_of_five():
 
 # Task 5
 def get_second_to_last_element(my_tuple):
-    """
-    This function takes a tuple and should return the 2nd to last element
-    """
-    pass
+    return my_tuple[-2]
 
 
-@skip_test
+@run_test
 def test_get_second_to_last_element():
     assert get_second_to_last_element((1, 6, 5, 2, 5)) == 2, \
         format_err_msg(2, get_second_to_last_element((1, 6, 5, 2, 5)))
@@ -116,13 +99,10 @@ def test_get_second_to_last_element():
 
 # Task 6
 def get_last_three_elements(my_tuple):
-    """
-    This function should return the final 3 elements of the given tuple
-    """
-    pass
+    return my_tuple[-3:]
 
 
-@skip_test
+@run_test
 def test_get_last_three_elements():
     assert get_last_three_elements((1, 6, 5, 2, 5)) == (5, 2, 5), \
         format_err_msg((5, 2, 5), get_last_three_elements((1, 6, 5, 2, 5)))
@@ -144,16 +124,10 @@ def test_get_last_three_elements():
 
 # Task 7
 def check_element_is_present(my_tuple, element):
-    """
-    This function should take two arguments, a tuple and a value.
-    It should check if the value is present in the tuple and return a boolean.
-    True - if the element is present in the tuple
-    False - if the element is NOT present in the tuple
-    """
-    pass
+    return True if element in my_tuple else False
 
 
-@skip_test
+@run_test
 def test_check_element_is_present():
     assert check_element_is_present((1, 6, 5, 2, 5), 6) is True, \
         format_err_msg(True,
@@ -182,17 +156,10 @@ def test_check_element_is_present():
 
 # Task 8
 def tuple_switcheroo(*args):
-    """
-    This function should take any number of arguments and return the given
-        arguments in a tuple. However the order of the arguments should be
-        reversed.
-
-    E.g: tuple_switcheroo(1,2,3) should return (3,2,1)
-    """
-    pass
+    return args[::-1]
 
 
-@skip_test
+@run_test
 def test_tuple_switcheroo():
     assert tuple_switcheroo(3, 4) == (4, 3), \
         format_err_msg((4, 3), tuple_switcheroo(3, 4))
