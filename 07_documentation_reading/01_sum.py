@@ -7,17 +7,12 @@ from test_api.checks import run_test, format_err_msg
 # DO NOT CHANGE CODE ABOVE THIS LINE
 
 def calculate_price_percentage(percentage_changes):
-    """
-    This function is used by a shop to add percentage increases to the price of an item.
-    The function will take a list of price increases/decreases as an argument and return the final price as a percentage of the total.
 
-    For example, if a price had a 10% discount from multi-buy and a 15% discount from another offer, then your function would be invoked with a list containing -10 and -15. These would be taken off the original price (100%) returning a final value of 75 (representing 75% of the original).
+    holder = 100
+    for i in percentage_changes:
+        holder = holder + i
 
-    Use the built-in sum function to work out the modified percentage.
-    https://docs.python.org/3/library/functions.html#sum
-    """
-
-    pass
+    return holder
 
 
 @run_test
